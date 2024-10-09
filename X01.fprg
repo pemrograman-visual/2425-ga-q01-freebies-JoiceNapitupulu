@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="q01"/>
+        <attribute name="authors" value="JOICE"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-09 03:55:20 PM"/>
+        <attribute name="created" value="Sk9JQ0U7QkVFTFpFQlVCOzIwMjQtMTAtMDk7MDM6MTg6MzQgUE07MjI5OQ=="/>
+        <attribute name="edited" value="Sk9JQ0U7QkVFTFpFQlVCOzIwMjQtMTAtMDk7MDM6NTU6MjAgUE07MTsyNDAz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="hargabuku, hargaterkecil, hargasementara, hargatotal" type="Real" array="False" size=""/>
+            <assign variable="hargabuku" expression="0"/>
+            <assign variable="hargasementara" expression="0"/>
+            <assign variable="hargaterkecil" expression="1000"/>
+            <do expression="hargabuku!=0">
+                <input variable="hargabuku"/>
+                <if expression="hargabuku=0">
+                    <then/>
+                    <else>
+                        <if expression="hargaterkecil&lt;hargabuku">
+                            <then/>
+                            <else>
+                                <assign variable="hargaterkecil" expression="hargabuku"/>
+                            </else>
+                        </if>
+                        <assign variable="hargasementara" expression="hargasementara + hargabuku"/>
+                    </else>
+                </if>
+            </do>
+            <if expression="hargasementara&gt;=100">
+                <then>
+                    <assign variable="hargatotal" expression="hargasementara-hargaterkecil"/>
+                </then>
+                <else>
+                    <assign variable="hargatotal" expression="hargasementara"/>
+                </else>
+            </if>
+            <output expression="ToFixed(hargatotal,2)" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
