@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "x01&#45;01",
+      "setup": "make compile",
+      "run": "make -s test",
+      "input": "24.99\r\n31.99\r\n58.15\r\n27.55\r\n0\r\n",
+      "output": "117.69\r\n",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 20
+    },
+    {
+      "name": "x01&#45;02",
+      "setup": "make compile",
+      "run": "make -s test",
+      "input": "44.99\r\n11.99\r\n48.15\r\n0\r\n",
+      "output": "93.14\r\n",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 20
+    },
+    {
+      "name": "x01&#38;&#35;45&#59;03",
+      "setup": "make compile",
+      "run": "make -s test",
+      "input": "20.00\r\n33.78\r\n44.99\r\n0\r\n",
+      "output": "98.77\r\n",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 20
+    },
+    {
+      "name": "x01&#38;&#35;45&#59;05",
+      "setup": "make compile",
+      "run": "make -s test",
+      "input": "18.40\r\n33.60\r\n12.59\r\n12.59\r\n30.50\r\n0\r\n",
+      "output": "95.09\r\n",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 20
+    },
+    {
+      "name": "x01&#38;&#35;45&#59;05",
+      "setup": "make compile",
+      "run": "make -s test",
+      "input": "20.40\r\n33.78\r\n44.99\r\n12.59\r\n0\r\n",
+      "output": "99.17\r\n",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 20
+    }
+  ]
+}

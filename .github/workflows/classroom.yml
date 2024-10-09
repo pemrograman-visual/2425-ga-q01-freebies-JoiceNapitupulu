@@ -1,108 +1,19 @@
-name: Autograding Tests
-'on':
-- push
-- repository_dispatch
+name: GitHub Classroom Workflow
+
+on:
+  - push
+  - workflow_dispatch
+
 permissions:
   checks: write
   actions: read
   contents: read
+
 jobs:
-  run-autograding-tests:
+  build:
+    name: Autograding
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: x01&#45;01
-      id: x01-45-01
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: x01&#45;01
-        setup-command: make compile
-        command: make -s test
-        input: |-
-          24.99
-          31.99
-          58.15
-          27.55
-          0
-        expected-output: '117.69'
-        comparison-method: exact
-        timeout: 1
-        max-score: 20
-    - name: x01&#45;02
-      id: x01-45-02
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: x01&#45;02
-        setup-command: make compile
-        command: make -s test
-        input: |-
-          44.99
-          11.99
-          48.15
-          0
-        expected-output: '93.14'
-        comparison-method: exact
-        timeout: 1
-        max-score: 20
-    - name: x01&#38;&#35;45&#59;03
-      id: x01-38-35-45-59-03
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: x01&#38;&#35;45&#59;03
-        setup-command: make compile
-        command: make -s test
-        input: |-
-          20.00
-          33.78
-          44.99
-          0
-        expected-output: '98.77'
-        comparison-method: exact
-        timeout: 1
-        max-score: 20
-    - name: x01&#38;&#35;45&#59;05
-      id: x01-38-35-45-59-05
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: x01&#38;&#35;45&#59;05
-        setup-command: make compile
-        command: make -s test
-        input: |-
-          18.40
-          33.60
-          12.59
-          12.59
-          30.50
-          0
-        expected-output: '95.09'
-        comparison-method: exact
-        timeout: 1
-        max-score: 20
-    - name: x01&#38;&#35;45&#59;05
-      id: x01-38-35-45-59-05
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: x01&#38;&#35;45&#59;05
-        setup-command: make compile
-        command: make -s test
-        input: |-
-          20.40
-          33.78
-          44.99
-          12.59
-          0
-        expected-output: '99.17'
-        comparison-method: exact
-        timeout: 1
-        max-score: 20
-    - name: Autograding Reporter
-      uses: classroom-resources/autograding-grading-reporter@v1
-      env:
-        X01-45-01_RESULTS: "${{steps.x01-45-01.outputs.result}}"
-        X01-45-02_RESULTS: "${{steps.x01-45-02.outputs.result}}"
-        X01-38-35-45-59-03_RESULTS: "${{steps.x01-38-35-45-59-03.outputs.result}}"
-        X01-38-35-45-59-05_RESULTS: "${{steps.x01-38-35-45-59-05.outputs.result}}"
-      with:
-        runners: x01-45-01,x01-45-02,x01-38-35-45-59-03,x01-38-35-45-59-05,x01-38-35-45-59-05
+      - uses: actions/checkout@v4
+      - uses: education/autograding@v1
